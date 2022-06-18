@@ -18,10 +18,10 @@ const SinglePost = ({post}) => {
                             
                         </div>
                         <p>{post_details}</p>
-                        <div>
-                            <p>{liked_posts_count} Like</p>
-                            <p>{comments_count} Comment</p>
-                            <p>Share</p>
+                        <div className='flex  items-center gap-5 '>
+                            <p className='bg-base-100 rounded-full p-3  flex justify-center items-center gap-2 flex-wrap'><i class="fa-solid fa-thumbs-up"></i> {liked_posts_count} Like</p>
+                            <p className='bg-base-100 rounded-full p-3  flex justify-center items-center gap-2'><i class="fa-solid fa-comments"></i> {comments_count} Comment</p>
+                            <p className='bg-base-100 rounded-full p-3  flex justify-center items-center gap-2'> <i class="fa-solid fa-share-from-square"></i>Share</p>
                         </div>
 
                     </div>
