@@ -6,6 +6,29 @@ const SinglePost = ({ post }) => {
     const { content_name } = post.post_contents[0]
     const { friend_profile_photo } = post.profile_images
 
+    const today = new Date()
+    const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    const dateTime = date + ' ' + time;
+
+    const year=created_at.split('T')[0]
+    console.log( year)
+    const t1=created_at.split('.')[0]
+    const t2=t1.split('T')[1]
+    console.log(t2)
+    const d1=new Date(date)
+    const d2=new Date(year)
+    const diff=Math.abs(d1-d2)
+
+    
+    const days=diff/(1000 * 3600 * 24) 
+    const dd=String(days)
+    const day=dd.split('.')[0]
+    const min=dd.split('.')[1]
+   
+
+    console.log(typeof dd,dd)
+
     return (
         <div className='bg-base-200  rounded my-5'>
             <div class="card w-full  ">
@@ -20,7 +43,10 @@ const SinglePost = ({ post }) => {
 
                             <div className='ml-5'>
                                 <h2 class="card-title">{first_name + " " + last_name}</h2>
-                                <small>{created_at}</small>
+                                <small>{
+                                day?`${day}d ${min}m ago`:`${min}min ago`
+                                
+                                } </small>
                             </div>
                         </div>
                         <div>
@@ -28,7 +54,7 @@ const SinglePost = ({ post }) => {
                         </div>
                     </div>
                     <div>
-                        <img src={`https://uviom-life.s3.amazonaws.com/images/content/post_images/`+content_name} alt="" />
+                        <img src={`https://uviom-life.s3.amazonaws.com/images/content/post_images/` + content_name} alt="" />
 
                     </div>
                     <p>{post_details}</p>

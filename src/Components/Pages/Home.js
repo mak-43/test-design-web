@@ -4,20 +4,33 @@ import './Home.css'
 const Home = () => {
     const [posts, setPost] = useState([])
     const [pageCount,setPageCount]=useState(0)
+    
    const [page,setPage]=useState(0)
     const [size,setSize]=useState(1)
+    const [post,setPst]=useState([])
+
+
+    useEffect(()=>{
+        if(page==1){
+            setPst(posts[0])
+        }
+
+    },[])
     
     useEffect(() => {
         fetch(`https://backend.uviom.com/frontend_api/test-data`)
             .then(res => res.json())
-            .then(data => {setPost(data.data)
+            .then(data => {
+                
+                setPost(data.data)
             
                 const count=data.data.length
                 const pages=Math.ceil(count/size)
-                console.log(count)
+               
                 setPageCount(pages)
             })
-    }, [page,size])
+    }, [])
+
     return (
         <div className='lg:px-20  lg:w-2/3 mx-auto sm:w-full'>
             Total Posts : {posts.length}
@@ -39,13 +52,13 @@ const Home = () => {
                     >{number+1}</button>)
             }
             
-            <select onChange={e=>setSize(e.target.value)}>
+            {/* <select onChange={e=>setSize(e.target.value)}>
                 <option value="1" selected>1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
-            </select>
+            </select> */}
             
             </div>
         </div>
