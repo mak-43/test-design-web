@@ -2,49 +2,48 @@ import React, { useEffect, useState } from 'react';
 import SinglePost from './SinglePost';
 import { Link } from "react-router-dom";
 import './Home.css'
+import { useQuery } from 'react-query';
+import Loading from '../Shared/Loading';
 const Home = () => {
-    const [posts, setPost] = useState([])
+   
     const [pageCount, setPageCount] = useState(0)
-
+    const[posts,setPost]=useState([])
     const [page, setPage] = useState(0)
     const [size, setSize] = useState(1)
     const [post, setPst] = useState([])
 
     
 
-    useEffect(() => {
-        if (page == 0) {
-            setPst(posts[0])
-            console.log(posts[0])
-        }
-        else if (page == 1) {
-            setPst(posts[1])
-            console.log(posts[1])
-        }
 
-    }, [])
    
-    useEffect(() => {
-        fetch(`https://backend.uviom.com/frontend_api/test-data`)
-            .then(res => res.json())
-            .then(data => {
+    // useEffect(() => {
+    //     fetch(`https://backend.uviom.com/frontend_api/test-data`)
+    //         .then(res => res.json())
+    //         .then(data => {
 
-                setPost(data.data)
+    //             setPost(data.data)
 
-                const count = data.data.length
-                const pages = Math.ceil(count / size)
+    //             const count = data.data.length
+    //             const pages = Math.ceil(count / size)
 
-                setPageCount(pages)
-            })
-    }, [])
+    //             setPageCount(pages)
+    //         })
+    // }, [])
+
+
+      const { data:data, isLoading, error, refetch } = useQuery('posts', () => fetch(`https://backend.uviom.com/frontend_api/test-data`).then(res => res.json()))
+        
+    if (isLoading) {
+        return <Loading />
+    }
 
     return (
-        <div className='lg:px-20  lg:w-2/3 mx-auto sm:w-full'>
-            Total Posts : {posts.length}
+        <div className='lg:px-20  lg:w-2/3 mx-auto sm:w-full '>
+            Total Posts : {data.data.length}
           
             <div className='bg-base-100 my-5'>
                 {
-                    posts.map(p =><SinglePost
+                    data.data.map(p =><SinglePost
                     key={p.id}
                     post={p}
                     ></SinglePost>)
