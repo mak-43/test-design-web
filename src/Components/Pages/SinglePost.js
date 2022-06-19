@@ -44,7 +44,8 @@ const SinglePost = ({ post }) => {
                             <div className='ml-5'>
                                 <h2 class="card-title">{first_name + " " + last_name}</h2>
                                 <small>{
-                                day?`${day}d ${min}m ago`:`${min}min ago`
+                                // day?`${day}d `:`min>60? ${min/60}h: ${min}s'`
+                                day?`${day}d ago`: `${min/60}hr ago` 
                                 
                                 } </small>
                             </div>
