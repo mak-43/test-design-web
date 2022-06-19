@@ -54,8 +54,8 @@ const SinglePost = ({ post }) => {
                             <i class="fa-solid fa-ellipsis m-5"></i>
                         </div>
                     </div>
-                    <div>
-                        <img src={`https://uviom-life.s3.amazonaws.com/images/content/post_images/` + content_name} alt="" />
+                    <div >
+                        <img className='rounded' src={`https://uviom-life.s3.amazonaws.com/images/content/post_images/` + content_name} alt="" />
 
                     </div>
                     <p>{post_details}</p>
