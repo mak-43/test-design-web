@@ -3,17 +3,17 @@ import React from 'react';
 const SinglePost = ({ post }) => {
     const { created_at, post_details, liked_posts_count, comments_count } = post
     const { first_name, last_name, username } = post.user
-    const { content_name } = post.post_contents
+    const { content_name } = post.post_contents[0]
     const { friend_profile_photo } = post.profile_images
 
     return (
-        <div className='bg-base-200  rounded'>
-            <div class="card w-full  m-5">
+        <div className='bg-base-200  rounded my-5'>
+            <div class="card w-full  ">
                 <div class="card-body ">
                     <div className='flex justify-between items-center'>
                         <div className='flex justify-between items-center'>
                             <div class="avatar">
-                                <div class="w-10 rounded-full ring ring-primary  ">
+                                <div class="w-10 rounded-full ring ring-primary ">
                                     <img src={`https://uviom-life.s3.amazonaws.com/images/personal/friend_profile_photo/` + friend_profile_photo} alt="" />
                                 </div>
                             </div>
@@ -28,7 +28,7 @@ const SinglePost = ({ post }) => {
                         </div>
                     </div>
                     <div>
-                        <img src={`https://uviom-life.s3.amazonaws.com/images/personal/friend_profile_photo/`+ content_name} alt="" />
+                        <img src={`https://uviom-life.s3.amazonaws.com/images/content/post_images/`+content_name} alt="" />
 
                     </div>
                     <p>{post_details}</p>

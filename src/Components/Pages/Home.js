@@ -19,9 +19,9 @@ const Home = () => {
             })
     }, [page,size])
     return (
-        <div className='lg:px-20  lg:w-2/3 mx-auto'>
+        <div className='lg:px-20  lg:w-2/3 mx-auto sm:w-full'>
             Total Posts : {posts.length}
-            <div className='bg-base-100'>
+            <div className='bg-base-100 my-5'>
                 {
                     posts.map(p =><SinglePost
                     key={p.id}
