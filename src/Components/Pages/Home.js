@@ -4,8 +4,8 @@ import './Home.css'
 const Home = () => {
     const [posts, setPost] = useState([])
     const [pageCount,setPageCount]=useState(0)
-    console.log(pageCount)
-    
+   const [page,setPage]=useState(0)
+    const [size,setSize]=useState(1)
     
     useEffect(() => {
         fetch(`https://backend.uviom.com/frontend_api/test-data`)
@@ -13,11 +13,11 @@ const Home = () => {
             .then(data => {setPost(data.data)
             
                 const count=data.data.length
-                const pages=Math.ceil(count/2)
+                const pages=Math.ceil(count/size)
                 console.log(count)
                 setPageCount(pages)
             })
-    }, [])
+    }, [page,size])
     return (
         <div className='lg:px-20  lg:w-2/3 mx-auto'>
             Total Posts : {posts.length}
@@ -33,8 +33,20 @@ const Home = () => {
             </div>
             <div className='pagination text-center my-5'>
             {
-                [...Array(pageCount).keys()].map(number=><button className='px-2'>{number+1}</button>)
+                [...Array(pageCount).keys()].map(number=><button 
+                    onClick={()=>setPage(number+1)}
+                    className={ page==number+1 ? 'selected px-2':'px-2'}
+                    >{number+1}</button>)
             }
+            
+            <select onChange={e=>setSize(e.target.value)}>
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            
             </div>
         </div>
     );

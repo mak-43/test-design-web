@@ -11,17 +11,24 @@ const SinglePost = ({ post }) => {
             <div class="card w-full  m-5">
                 <div class="card-body ">
                     <div className='flex justify-between items-center'>
-                        <div>
-                            <img src={friend_profile_photo} alt="" />
-                            <h2 class="card-title">{first_name + " " + last_name}</h2>
-                            <small>{created_at}</small>
+                        <div className='flex justify-between items-center'>
+                            <div class="avatar">
+                                <div class="w-10 rounded-full ring ring-primary  ">
+                                    <img src={`https://uviom-life.s3.amazonaws.com/images/personal/friend_profile_photo/` + friend_profile_photo} alt="" />
+                                </div>
+                            </div>
+
+                            <div className='ml-5'>
+                                <h2 class="card-title">{first_name + " " + last_name}</h2>
+                                <small>{created_at}</small>
+                            </div>
                         </div>
                         <div>
                             <i class="fa-solid fa-ellipsis m-5"></i>
                         </div>
                     </div>
                     <div>
-                        <img src={content_name} alt="" />
+                        <img src={`https://uviom-life.s3.amazonaws.com/images/personal/friend_profile_photo/`+ content_name} alt="" />
 
                     </div>
                     <p>{post_details}</p>
