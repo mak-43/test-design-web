@@ -12,10 +12,10 @@ const SinglePost = ({ post }) => {
     const dateTime = date + ' ' + time;
 
     const year=created_at.split('T')[0]
-    console.log( year)
+
     const t1=created_at.split('.')[0]
     const t2=t1.split('T')[1]
-    console.log(t2)
+
     const d1=new Date(date)
     const d2=new Date(year)
     const diff=Math.abs(d1-d2)
@@ -27,7 +27,7 @@ const SinglePost = ({ post }) => {
     const min=dd.split('.')[1]
    
 
-    console.log(typeof dd,dd)
+  
 
     return (
         <div className='bg-base-200  rounded my-5'>
@@ -45,7 +45,7 @@ const SinglePost = ({ post }) => {
                                 <h2 class="card-title">{first_name + " " + last_name}</h2>
                                 <small>{
                                 // day?`${day}d `:`min>60? ${min/60}h: ${min}s'`
-                                day?`${day}d ago`: `${min/60}hr ago` 
+                                day?`${day}d   ago`: `${min/60}hr ago` 
                                 
                                 } </small>
                             </div>
