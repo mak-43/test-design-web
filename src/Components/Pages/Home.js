@@ -32,7 +32,8 @@ const Home = () => {
 
 
       const { data:data, isLoading, error, refetch } = useQuery('posts', () => fetch(`https://backend.uviom.com/frontend_api/test-data`).then(res => res.json()))
-        
+       
+      
     if (isLoading) {
         return <Loading />
     }
@@ -40,6 +41,7 @@ const Home = () => {
     return (
         <div className='lg:px-20  lg:w-2/3 mx-auto sm:w-full '>
             Total Posts : {data.data.length}
+            
           
             <div className='bg-base-100 my-5'>
                 {
@@ -55,7 +57,7 @@ const Home = () => {
             </div>
             <div className='pagination text-center my-5'>
                 {
-                    [...Array(pageCount).keys()].map(number => <button
+                    [...Array(data.data.length).keys()].map(number => <button
                         onClick={() => setPage(number + 1)}
                         className={page == number + 1 ? 'selected px-2' : 'px-2'}
                     >{number + 1}</button>)

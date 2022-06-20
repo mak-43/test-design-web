@@ -38,11 +38,11 @@ const Contact = () => {
                             
                             <input  placeholder="Name" class="input input-bordered w-full max-w-xs mt-3" type="text" name="user_name" />
                            
-                            <input  placeholder="Email" class="input input-bordered w-full max-w-xs mt-3" type="email" name="user_email" />
+                            <input  required placeholder="Email" class="input input-bordered w-full max-w-xs mt-3" type="email" name="user_email" />
                             <input  placeholder="Subject" class="input input-bordered w-full max-w-xs mt-3" type="text" name="subject" />
                            
                       
-                            <textarea placeholder="Message..." class="input input-bordered w-full max-w-xs mt-3" name="message" />
+                            <textarea required placeholder="Message..." class="input input-bordered w-full max-w-xs mt-3" name="message" />
                             <input type="submit"  className='btn my-3' value='send message' />
                         </form>
                         {/* <form onSubmit={sendEmail} class=" text-center flex flex-col justify-center items-center gap-2 " action="">
