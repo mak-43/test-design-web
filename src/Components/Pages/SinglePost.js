@@ -95,7 +95,7 @@ const SinglePost = ({ post }) => {
                                         diffDuration.days()+'d'+diffDuration.hours()+'hr'+diffDuration.minutes()+'min ago' 
                                     } */}
                                 {
-                                    diffDuration.days()? diffDuration.days()+'d ago':diffDuration.hours()+'hr '+diffDuration.minutes()+'min ago'
+                                    diffDuration.days()? diffDuration.days()+'d ago':diffDuration.hours()?diffDuration.hours() +'hr ago':diffDuration.minutes()?diffDuration.minutes()+'min ago':diffDuration.seconds()+'sec ago'
                                 }
 
                                 </small>
