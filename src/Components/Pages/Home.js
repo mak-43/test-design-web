@@ -11,14 +11,14 @@ const Home = () => {
 
     const [page, setPage] = useState(1)
 
-    const [size, setSize] = useState(2)
+    const [size, setSize] = useState(1)
     const [posts, setPost] = useState()
     const [loading, setLoading] = useState(false)
-    const [currentPage, setCurrentPage] = useState(page)
+    const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(size)
 
-    
-    console.log(page)
+
+    console.log('value of page: ', page)
     useEffect(() => {
 
         const fetchPosts = async () => {
@@ -36,7 +36,7 @@ const Home = () => {
         //         setPost(data)
         //          setLoading(false)
         //     })
-    }, [page])
+    }, [])
 
 
     //   const { data:data, isLoading, error, refetch } = useQuery('posts', () => fetch(`https://backend.uviom.com/frontend_api/test-data`).then(res => res.json()))
@@ -75,17 +75,19 @@ const Home = () => {
             <div className='pagination text-center my-5'>
                 {
                     [...Array(posts?.data?.length).keys()].map(number => <button
-                        onClick={() => setPage(number+1 )}
-                        className={page == number+1  ? 'selected px-2' : 'px-2'}
+                        onClick={() => setCurrentPage(number+1 )}
+                        className={currentPage == number+1  ? 'selected px-2' : 'px-2'}
                     >{number +1}</button>)
                 }
 
-                <select onChange={e => setSize(e.target.value)}>
+                <select onChange={e => setPostsPerPage(e.target.value)}>
                     <option value="1" selected>1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
                 </select>
 
             </div>
