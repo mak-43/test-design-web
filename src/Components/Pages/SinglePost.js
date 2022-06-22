@@ -1,10 +1,14 @@
 import moment from 'moment';
 import { duration } from 'moment';
 import React from 'react';
+import Loading from '../Shared/Loading';
 
 
 
-const SinglePost = ({ post }) => {
+const SinglePost = ({ post ,loading}) => {
+    if(loading){
+        return <Loading/>
+    }
     const { created_at, post_details, liked_posts_count, comments_count } = post
     const { first_name, last_name, username } = post.user
     const { content_name } = post.post_contents[0]
@@ -95,7 +99,7 @@ const SinglePost = ({ post }) => {
                                         diffDuration.days()+'d'+diffDuration.hours()+'hr'+diffDuration.minutes()+'min ago' 
                                     } */}
                                 {
-                                    diffDuration.days()? diffDuration.days()+'d ago':diffDuration.hours()?diffDuration.hours() +'hr ago':diffDuration.minutes()?diffDuration.minutes()+'min ago':diffDuration.seconds()+'sec ago'
+                                    diffDuration.days()? diffDuration.days()+' d ago':diffDuration.hours()?diffDuration.hours() +' hr ago':diffDuration.minutes()?diffDuration.minutes()+' min ago':diffDuration.seconds()+' sec ago'
                                 }
 
                                 </small>
