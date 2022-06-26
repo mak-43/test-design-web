@@ -11,7 +11,7 @@ const Footer = () => {
                 <a className=' text-black' href='https://www.linkedin.com/in/mak143/' target={"blank"} > <i class="fa-brands fa-twitter"></i></a>
                 <a className=' text-black' href='https://www.linkedin.com/in/mak143/' target={"blank"} ><i class="fa-brands fa-instagram"></i></a>
                 <a className=' text-black' href='https://www.linkedin.com/in/mak143/' target={"blank"} > <i class="fa-brands fa-youtube"></i></a>
-                <a className=' text-black' href='https://www.linkedin.com/in/mak143/' target={"blank"} > <i class="fa-brands fa-linkedin"></i></a>    
+                <a className=' text-black ' href='https://www.linkedin.com/in/mak143/' target={"blank"} > <i class="fa-brands fa-linkedin "></i></a>    
             </div>
             <div className='text-black text-center'><small>Copyright &copy; {year}  </small></div>
         </div>

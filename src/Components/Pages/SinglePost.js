@@ -10,9 +10,22 @@ const SinglePost = ({ post ,loading}) => {
         return <Loading/>
     }
     const { created_at, post_details, liked_posts_count, comments_count } = post
-    const { first_name, last_name, username } = post.user
-    const { content_name } = post.post_contents[0]
-    const { friend_profile_photo } = post.profile_images
+    const { first_name, last_name, username } = post?.user
+    // let {content_name}= post?.post_contents[0]
+
+    
+    // console.log('content ',content_name)
+    // if(content_name==undefined){
+    //     content_name=`https://www.pngfind.com/pngs/m/110-1102775_download-empty-profile-hd-png-download.png`
+    // }else{
+    //     content_name=content_name
+    // }
+    // console.log('content name',content_name)
+   
+//    let { content_name } = post?.post_contents
+   
+//      console.log('content name',content_name)
+    const { friend_profile_photo } = post?.profile_images
 
     const today = new Date()
     const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
@@ -59,7 +72,7 @@ const SinglePost = ({ post ,loading}) => {
     var dat = new Date(created_at);
     var seconds = dat.getTime()  
     var newdat=ndat-seconds
-    console.log('sec',seconds,ndat,newdat)
+   
 
     const state = { startDate: seconds, timeEnd: ndat } // example
 
@@ -74,6 +87,20 @@ const SinglePost = ({ post ,loading}) => {
     console.log("Minutes:", diffDuration.minutes());
     console.log("Seconds:", diffDuration.seconds());
 
+
+    // {post?.post_contents[0]?
+    //     post?.post_contents[0]: post?.post_contents
+        
+
+    //    }
+       let dhor
+       if(post.post_contents[0]==undefined){
+        dhor= post?.post_contents
+       }
+       else{
+        dhor=post?.post_contents[0]
+       }
+       let {content_name}=dhor
 
     return (
         <div className='bg-base-200  rounded my-5'>
@@ -109,8 +136,18 @@ const SinglePost = ({ post ,loading}) => {
                             <i class="fa-solid fa-ellipsis m-5"></i>
                         </div>
                     </div>
-                    <div >
-                        <img className='rounded' src={`https://uviom-life.s3.amazonaws.com/images/content/post_images/` + content_name} alt="" />
+                    <div className='' >
+                                
+                     
+                   
+                        <img className='rounded'   src={content_name ? `https://uviom-life.s3.amazonaws.com/images/content/post_images/` + content_name:' https://www.pngfind.com/pngs/m/110-1102775_download-empty-profile-hd-png-download.png'}  />
+
+                        {/* {
+                            content_name?
+                            <img src={`https://uviom-life.s3.amazonaws.com/images/content/post_images/`+ {content_name}} />:
+                            'Image'
+                        } */}
+                        {/* <img src={`https://uviom-life.s3.amazonaws.com/images/content/post_images/`+content_name} alt="" /> */}
 
                     </div>
                     <p>{post_details}</p>
